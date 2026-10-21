@@ -1,0 +1,13 @@
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Ll]ogs/
+MemoryCaptures/
+
+.idea/
+.vscode/
+*.swp
+*.swo
+
+Build/
+Builds/
