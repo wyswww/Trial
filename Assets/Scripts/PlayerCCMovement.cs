@@ -22,17 +22,19 @@ public class PlayerCCMovement : MonoBehaviour
     // 参数必须是 InputValue，且方法为 public
     public void OnMove(InputValue value)
     {
-        _rawInput = value.Get<Vector2>();
-        Debug.Log("输入：" + _rawInput);
+        if (!isActiveAndEnabled) return;
+        _rawInput = Vector2.ClampMagnitude(value.Get<Vector2>(), 1f);
+        FaceMoveDirection();
     }
 
     void Update()
     {
         // 输入平滑
-        _smoothInput = Vector2.Lerp(_smoothInput, _rawInput, Time.deltaTime / smoothTime);
+        _smoothInput = Vector2.Lerp(_smoothInput, _rawInput,
+            smoothTime <= 0f ? 1f : Time.deltaTime / smoothTime);
 
         // 水平移动
-        Vector3 moveDir = transform.right * _smoothInput.x + transform.forward * _smoothInput.y;
+        Vector3 moveDir = new Vector3(_smoothInput.x, 0f, _smoothInput.y);
         _cc.Move(moveDir * moveSpeed * Time.deltaTime);
 
         // 重力 / 贴地
@@ -42,5 +44,19 @@ public class PlayerCCMovement : MonoBehaviour
         }
         _velocity.y += gravity * Time.deltaTime;
         _cc.Move(_velocity * Time.deltaTime);
+    }
+
+    public void FaceMoveDirection()
+    {
+        Vector3 direction = new Vector3(_rawInput.x, 0f, _rawInput.y);
+        if (direction.sqrMagnitude > 0.0001f)
+            transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
+    }
+
+    private void OnDisable()
+    {
+        _rawInput = Vector2.zero;
+        _smoothInput = Vector2.zero;
+        _velocity = Vector3.zero;
     }
 }
