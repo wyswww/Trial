@@ -39,7 +39,9 @@ public class Health : MonoBehaviour
             foreach (Collider targetCollider in GetComponentsInChildren<Collider>(true))
             {
                 if (targetCollider.GetComponentInParent<Health>() == this)
+                {
                     targetCollider.enabled = false;
+                }
             }
         }
         onDeath.Invoke();
@@ -47,9 +49,15 @@ public class Health : MonoBehaviour
 
     public void Heal(int amount)
     {
-        if (IsDead || amount <= 0) return;
+        if (IsDead || amount <= 0)
+        {
+            return;
+        }
         int healed = Mathf.Min(amount, maxHealth - CurrentHealth);
-        if (healed == 0) return;
+        if (healed == 0)
+        {
+            return;
+        }
         CurrentHealth += healed;
         LogHealth($"回血 +{healed}");
     }
@@ -57,7 +65,9 @@ public class Health : MonoBehaviour
     private void LogHealth(string action)
     {
         if (logHealthChanges)
+        {
             Debug.Log($"[Health] {name}：{action}，HP {CurrentHealth}/{MaxHealth}", this);
+        }
     }
 
     private void OnValidate()

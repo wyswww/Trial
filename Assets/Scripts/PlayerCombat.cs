@@ -24,14 +24,23 @@ public class PlayerCombat : MonoBehaviour
         _health = GetComponent<Health>();
         _input = GetComponent<PlayerInput>();
         _movement = GetComponent<PlayerCCMovement>();
-        if (attackPoint == null) attackPoint = transform.Find("AttackPoint");
-        if (enemyLayers.value == 0) enemyLayers = LayerMask.GetMask("Enemy");
+        if (attackPoint == null)
+        {
+            attackPoint = transform.Find("AttackPoint");
+        }
+        if (enemyLayers.value == 0)
+        {
+            enemyLayers = LayerMask.GetMask("Enemy");
+        }
     }
 
     private void OnEnable()
     {
         _health.OnDeath.AddListener(StopPlayer);
-        if (_health.IsDead) StopPlayer();
+        if (_health.IsDead)
+        {
+            StopPlayer();
+        }
     }
 
     private void OnDisable()
@@ -42,7 +51,10 @@ public class PlayerCombat : MonoBehaviour
     // PlayerInput: Send Messages, player/Attack, <Mouse>/leftButton.
     public void OnAttack(InputValue value)
     {
-        if (!isActiveAndEnabled || !value.isPressed) return;
+        if (!isActiveAndEnabled || !value.isPressed)
+        {
+            return;
+        }
         if (_health.IsDead)
         {
             LogAttack("忽略攻击：玩家已死亡");
@@ -70,7 +82,9 @@ public class PlayerCombat : MonoBehaviour
         {
             Health target = hit.GetComponentInParent<Health>();
             if (target != null && target != _health && !target.IsDead && damaged.Add(target))
+            {
                 target.TakeDamage(attackDamage);
+            }
         }
         LogAttack($"攻击触发：检测到 {hits.Length} 个 Collider，命中 {damaged.Count} 个 Health 目标" +
             (hits.Length == 0 ? "；请检查距离、朝向及 Enemy 层" : ""));
@@ -78,7 +92,10 @@ public class PlayerCombat : MonoBehaviour
 
     private void LogAttack(string message)
     {
-        if (logAttacks) Debug.Log($"[Combat] {name}：{message}", this);
+        if (logAttacks)
+        {
+            Debug.Log($"[Combat] {name}：{message}", this);
+        }
     }
 
     private void StopPlayer()
