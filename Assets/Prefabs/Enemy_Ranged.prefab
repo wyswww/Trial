@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e70427bd661f4ec399f56bbfcb417013, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   maxHealth: 60
   disableCollidersOnDeath: 1
@@ -157,7 +157,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-
 --- !u!114 &8550310393837486725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,11 +167,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcc1274effd847a2bfda78e695b103a2, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemyAI
   attackRange: 6
   attackInterval: 1.5
   attackDamage: 10
-
   projectilePrefab: {fileID: 0}
   muzzle: {fileID: 0}
