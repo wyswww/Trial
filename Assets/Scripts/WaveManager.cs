@@ -50,7 +50,7 @@ public class WaveManager : MonoBehaviour
             if (!TrySpawn(i))
             {
                 spawning = false;
-                Finish("刷怪失败：找不到有效导航落点，请检查 NavMesh");
+                Finish("刷怪失败：没有找到可用出生位置，具体原因见 Console");
                 return;
             }
         }
@@ -70,6 +70,11 @@ public class WaveManager : MonoBehaviour
             // 只在该 Agent 允许行走的导航区域中寻找落点。
             areaMask = template.areaMask
         };
+        // 分别记录被哪条规则拒绝，避免把位置拥挤误报成没有导航网格。
+        int noNavMesh = 0;
+        int tooCloseToPlayer = 0;
+        int overlappingEnemy = 0;
+        int agentNotBound = 0;
         for (int attempt = 0; attempt < attemptsPerEnemy; attempt++)
         {
             // 出生点轮流使用，无有效点则以管理器位置为中心。
@@ -85,6 +90,7 @@ public class WaveManager : MonoBehaviour
             // 找到附近导航地面，不代表检查了到玩家的完整路径。
             if (!NavMesh.SamplePosition(candidate, out NavMeshHit hit, sampleDistance, filter))
             {
+                noNavMesh++;
                 continue;
             }
             // 忽略玩家高度计算距离，防止贴脸出生。
@@ -92,6 +98,7 @@ public class WaveManager : MonoBehaviour
             playerGround.y = hit.position.y;
             if (Vector3.Distance(playerGround, hit.position) < 2f)
             {
+                tooCloseToPlayer++;
                 continue;
             }
             // 逐个查座位间距，避免敌人挤在一起。
@@ -108,6 +115,7 @@ public class WaveManager : MonoBehaviour
             }
             if (occupied)
             {
+                overlappingEnemy++;
                 continue;
             }
             // SamplePosition gives the navigation surface, not the model's centre.
@@ -118,6 +126,7 @@ public class WaveManager : MonoBehaviour
             // 生成后复检导航，不可用则销毁并重试。
             if (!agent.enabled || !agent.isOnNavMesh)
             {
+                agentNotBound++;
                 Destroy(enemy.gameObject);
                 continue;
             }
@@ -126,7 +135,9 @@ public class WaveManager : MonoBehaviour
             enemy.Initialize(player, this);
             return true;
         }
-        Debug.LogError($"[WaveManager] 敌人 {index + 1} 在 {attemptsPerEnemy} 次尝试后仍无法生成。", this);
+        Debug.LogError($"[WaveManager] 敌人 {index + 1}（{selectedPrefab.name}）在 {attemptsPerEnemy} 次尝试后仍无法生成。" +
+            $"导航采样失败={noNavMesh}，离玩家太近={tooCloseToPlayer}，与敌人重叠={overlappingEnemy}，Agent 绑定失败={agentNotBound}。" +
+            $"随机半径={spawnRadius}，采样距离={sampleDistance}，已生成={alive.Count}。", this);
         return false;
     }
 

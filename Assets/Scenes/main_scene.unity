@@ -1627,7 +1627,7 @@ MonoBehaviour:
   enemyCount: 3
   spawnRadius: 2
   sampleDistance: 2
-  attemptsPerEnemy: 6
+  attemptsPerEnemy: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
