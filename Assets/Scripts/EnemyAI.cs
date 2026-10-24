@@ -81,6 +81,7 @@ public class EnemyAI : MonoBehaviour
         }
         nextAttackTime = Time.time + attackInterval;
         // 统一调用攻击入口：基类执行近战扣血，远程子类改为发射子弹。
+        GetComponent<KayKitCharacterAnimation>()?.PlayAttack();
         PerformAttack();
     }
 

@@ -68,6 +68,7 @@ public class PlayerCCMovement : MonoBehaviour
         nextDodgeTime = Time.time + dodgeCooldown;
         // 只登记本移动组件提供的无敌，不直接改碰撞体，因此仍会被墙挡住。
         health.SetInvulnerable(this, true);
+        GetComponent<KayKitCharacterAnimation>()?.PlayDodge(dodgeDuration);
         CombatRangeEffect.Show(transform.position, 0.65f, Color.cyan, dodgeDuration);
     }
 

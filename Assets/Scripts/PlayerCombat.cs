@@ -34,6 +34,7 @@ public class PlayerCombat : MonoBehaviour
         if (!isActiveAndEnabled || !value.isPressed || Time.timeScale <= 0f ||
             _health.IsDead || Time.time < nextSkillTime) return;
         nextSkillTime = Time.time + skillCooldown;
+        GetComponent<KayKitCharacterAnimation>()?.PlaySkill();
         // 把本帧 Transform 变化同步到物理系统，让范围检测使用最新位置。
         Physics.SyncTransforms();
         // 本次释放的受伤名单：同一 Health 下多个碰撞体只结算一次。
@@ -109,6 +110,7 @@ public class PlayerCombat : MonoBehaviour
 
         // 先预约下次出手，挥空也消耗冷却。
         _nextAttackTime = Time.time + attackCooldown;
+        GetComponent<KayKitCharacterAnimation>()?.PlayAttack();
         // Apply a direction received this frame before querying the attack volume.
         // 先朝最新输入方向转身，再同步物理位置。
         _movement.FaceMoveDirection();
