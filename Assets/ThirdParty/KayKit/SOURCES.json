@@ -1,0 +1,132 @@
+{
+  "license": "CC0-1.0",
+  "author": "Kay Lousberg (KayKit)",
+  "files": [
+    {
+      "file": "Adventurers/Characters/fbx/Knight.fbx",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0",
+      "source_commit": "672074b73ba276876a19e8816ecdc5241817ab47",
+      "source_path": "addons/kaykit_character_pack_adventures/Characters/fbx/Knight.fbx",
+      "git_blob_sha1": "101848795913dea0d37ac3ec9352fdf9dd024010",
+      "sha256": "b25e35cc7eaaa3c7c103f10a4f41fde1cbd81936fede9aa9ae4efbd29d40ba1b",
+      "bytes": 20659324
+    },
+    {
+      "file": "Adventurers/Characters/fbx/knight_texture.png",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0",
+      "source_commit": "672074b73ba276876a19e8816ecdc5241817ab47",
+      "source_path": "addons/kaykit_character_pack_adventures/Characters/fbx/knight_texture.png",
+      "git_blob_sha1": "a56eae7514f908862e304620b89dc2d0cb9f362f",
+      "sha256": "5d250ccc5da020e6126bfa3839f83bd9a465a951ed223e4d13c08b1925e154d4",
+      "bytes": 14172
+    },
+    {
+      "file": "Adventurers/Assets/fbx/sword_1handed.fbx",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0",
+      "source_commit": "672074b73ba276876a19e8816ecdc5241817ab47",
+      "source_path": "addons/kaykit_character_pack_adventures/Assets/fbx/sword_1handed.fbx",
+      "git_blob_sha1": "a9c79dfa08863cdbd49eeca6546e8390d54d15d5",
+      "sha256": "311c0a8fbc7ebf038e3a20c0a2cdc3ed35c3e2b8a1bf50417ba49019b79ab02f",
+      "bytes": 28428
+    },
+    {
+      "file": "Adventurers/Assets/fbx/shield_round.fbx",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0",
+      "source_commit": "672074b73ba276876a19e8816ecdc5241817ab47",
+      "source_path": "addons/kaykit_character_pack_adventures/Assets/fbx/shield_round.fbx",
+      "git_blob_sha1": "511d0cfa302c3b323ed042b184a1c026010b70bf",
+      "sha256": "ff5fa03567d7b103517f23d1b3c0167ca8c2e9d56aaeeadc290e081b961fba1e",
+      "bytes": 28556
+    },
+    {
+      "file": "Adventurers/Samples/knight.png",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0",
+      "source_commit": "672074b73ba276876a19e8816ecdc5241817ab47",
+      "source_path": "addons/kaykit_character_pack_adventures/Samples/knight.png",
+      "git_blob_sha1": "23ace548e0be00eb9a00de60df1457e8bcc760a9",
+      "sha256": "54b3ec162282b66722cb8376b8faa5002c16fc2b465cce03aa30387fe9eca0bf",
+      "bytes": 702980
+    },
+    {
+      "file": "Adventurers/LICENSE.txt",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0",
+      "source_commit": "672074b73ba276876a19e8816ecdc5241817ab47",
+      "source_path": "addons/kaykit_character_pack_adventures/LICENSE.txt",
+      "git_blob_sha1": "877e44735b5869c10e17a59e3b757905aa390626",
+      "sha256": "ae322141814056dda0deea7540d74c41d87aee1da319977cd1bd84ee5a923629",
+      "bytes": 891
+    },
+    {
+      "file": "Skeletons/Characters/fbx/Skeleton_Warrior.fbx",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Skeletons-1.0",
+      "source_commit": "15b62b9bad122f72926c10fb14d622c73819fa54",
+      "source_path": "addons/kaykit_character_pack_skeletons/Characters/fbx/Skeleton_Warrior.fbx",
+      "git_blob_sha1": "50d4da8df0aa0e468ddb2ab6e57b4d92e33db1cc",
+      "sha256": "783d88baface5b5aec4be3a1bdfe360e12e091dae753b3968161e7a69bd0c279",
+      "bytes": 22402076
+    },
+    {
+      "file": "Skeletons/Characters/fbx/Skeleton_Mage.fbx",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Skeletons-1.0",
+      "source_commit": "15b62b9bad122f72926c10fb14d622c73819fa54",
+      "source_path": "addons/kaykit_character_pack_skeletons/Characters/fbx/Skeleton_Mage.fbx",
+      "git_blob_sha1": "6a22509ce0375b24c0e757c06b46fc339ee656a1",
+      "sha256": "a5b6a9e9c690b2c23f52aa7a18aef411b56e9c660229c7e2d0f217f78752573c",
+      "bytes": 22295116
+    },
+    {
+      "file": "Skeletons/Characters/fbx/skeleton_texture.png",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Skeletons-1.0",
+      "source_commit": "15b62b9bad122f72926c10fb14d622c73819fa54",
+      "source_path": "addons/kaykit_character_pack_skeletons/Characters/fbx/skeleton_texture.png",
+      "git_blob_sha1": "00bf24bd5fd17937e08fd90f819a7bc69de432b8",
+      "sha256": "15741a25c53e04fa9bf3beac3bc0de442359404b1ff9be863b892cb551ad3657",
+      "bytes": 17037
+    },
+    {
+      "file": "Skeletons/Assets/fbx/Skeleton_Blade.fbx",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Skeletons-1.0",
+      "source_commit": "15b62b9bad122f72926c10fb14d622c73819fa54",
+      "source_path": "addons/kaykit_character_pack_skeletons/Assets/fbx/Skeleton_Blade.fbx",
+      "git_blob_sha1": "1920b6c1900866925bbea14bc9bb5bd960518386",
+      "sha256": "16c3d747dcbb0fc12902f4d99a31edee06c02348815308dc19a02ac1955ee515",
+      "bytes": 34508
+    },
+    {
+      "file": "Skeletons/Assets/fbx/Skeleton_Staff.fbx",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Skeletons-1.0",
+      "source_commit": "15b62b9bad122f72926c10fb14d622c73819fa54",
+      "source_path": "addons/kaykit_character_pack_skeletons/Assets/fbx/Skeleton_Staff.fbx",
+      "git_blob_sha1": "6c7f74650a79073a9065e36e817b5c67abfb870f",
+      "sha256": "7b9fa1ec537d6c5d609e83c2e3d13e247ca252716cab36a6fa83a63100145457",
+      "bytes": 77836
+    },
+    {
+      "file": "Skeletons/Samples/warrior.png",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Skeletons-1.0",
+      "source_commit": "15b62b9bad122f72926c10fb14d622c73819fa54",
+      "source_path": "addons/kaykit_character_pack_skeletons/Samples/warrior.png",
+      "git_blob_sha1": "db3a00b3bac22cbd8737b09f958c634e4ccbee04",
+      "sha256": "94aa7debc5080386568b5952529dbe5d3e30fadaf694e499f828ce8b6285c060",
+      "bytes": 1642498
+    },
+    {
+      "file": "Skeletons/Samples/mage.png",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Skeletons-1.0",
+      "source_commit": "15b62b9bad122f72926c10fb14d622c73819fa54",
+      "source_path": "addons/kaykit_character_pack_skeletons/Samples/mage.png",
+      "git_blob_sha1": "949e51f789ed6a41e38ff2b458c38d4e0b727506",
+      "sha256": "f4c4183758c0cfc65db44be530ac74e56daea2758c5f8de717ca23901a4032af",
+      "bytes": 1550233
+    },
+    {
+      "file": "Skeletons/LICENSE.txt",
+      "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Skeletons-1.0",
+      "source_commit": "15b62b9bad122f72926c10fb14d622c73819fa54",
+      "source_path": "addons/kaykit_character_pack_skeletons/LICENSE.txt",
+      "git_blob_sha1": "5de5a1e35003680bd6b97b4c247eed71d51a9fb7",
+      "sha256": "5d822abca4e08c5a91d329e5372b3dc605cba8d994f752cb0f7dfdb7a0a79954",
+      "bytes": 914
+    }
+  ]
+}
