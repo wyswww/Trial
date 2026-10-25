@@ -1,0 +1,233 @@
+{
+  "author": "Kay Lousberg / KayKit",
+  "license": "CC0-1.0",
+  "source_repository": "https://github.com/KayKit-Game-Assets/KayKit-Dungeon-Remastered-1.0",
+  "source_commit": "b0ca9bd96a8072ab36a3a5464f00ed1e06a16d07",
+  "source_page": "https://kaylousberg.itch.io/kaykit-dungeon-remastered",
+  "files": [
+    {
+      "file": "Assets/fbx/wall.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall.fbx",
+      "git_blob_sha1": "555636059e620664ee218dd8ce2112552370230d",
+      "sha256": "93bb647a900a2f9d9485f44e4f0675d4239aa5360dcc30db2748a289d6442a25",
+      "bytes": 33180
+    },
+    {
+      "file": "Assets/fbx/wall_corner.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_corner.fbx",
+      "git_blob_sha1": "3f34350cfbc1ce5e005c3707a061292ac7bd08cf",
+      "sha256": "1b287197b7d656028e045aa241c9083a8fade45851923430a3ad58f240f6be7f",
+      "bytes": 32700
+    },
+    {
+      "file": "Assets/fbx/wall_corner_small.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_corner_small.fbx",
+      "git_blob_sha1": "aa340f439745cfa43965a3727356dc396237cc33",
+      "sha256": "11a1b93c5b30605c48e24dff9e70d3207761af5a0e1eae6c99c012144f95bf4a",
+      "bytes": 26460
+    },
+    {
+      "file": "Assets/fbx/wall_endcap.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_endcap.fbx",
+      "git_blob_sha1": "58a49f22eacd313b2af51dd3db9242233710914e",
+      "sha256": "0dba870dd11b93dbe4a2ff97e4838b7b86d3aadc22c5852015b19b3bfb381bdd",
+      "bytes": 25996
+    },
+    {
+      "file": "Assets/fbx/wall_half.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_half.fbx",
+      "git_blob_sha1": "dd1c2c5af0f1f31d48fb98394e602e9eb2256b19",
+      "sha256": "84150760d5db1df37034755d66dce1c323553146c76b84036b0c427d299bf988",
+      "bytes": 27692
+    },
+    {
+      "file": "Assets/fbx/wall_half_endcap.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_half_endcap.fbx",
+      "git_blob_sha1": "f4ddd810efa23b94a0a6202140a88c83215af976",
+      "sha256": "6f4240a9fec50c14dc2714b0d38d66950f13499b58ff9356b246555bc1158928",
+      "bytes": 27596
+    },
+    {
+      "file": "Assets/fbx/wall_doorway.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_doorway.fbx",
+      "git_blob_sha1": "9e0f8bd3df38fe142265e85cb23d5c78d230fd92",
+      "sha256": "3183607615032fa3113e2fe0e22a06580f5f6c040e6eda556334a591a4ef362d",
+      "bytes": 52012
+    },
+    {
+      "file": "Assets/fbx/wall_arched.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_arched.fbx",
+      "git_blob_sha1": "fff27916959b9c5bb79556e4555abebb7a1421da",
+      "sha256": "8a7b1f5fa74e563a9f94f4c58c5be95cd06653c0a160a9905a9a8e8abed8ad4c",
+      "bytes": 42156
+    },
+    {
+      "file": "Assets/fbx/wall_broken.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_broken.fbx",
+      "git_blob_sha1": "341bfac57be9c218c4643bea3be0985428840a27",
+      "sha256": "efe9f9b34def96636834ee11e0524a2bc569b2ddd44e5e999dd6501c8dc7eb4d",
+      "bytes": 44524
+    },
+    {
+      "file": "Assets/fbx/wall_cracked.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_cracked.fbx",
+      "git_blob_sha1": "fafac8914edc0a4a6b653434948d524350fe4b0c",
+      "sha256": "7942aa32d7f719cf1ddb38eb0975590e9e89093a9de31e57878819e0b97476d6",
+      "bytes": 86204
+    },
+    {
+      "file": "Assets/fbx/wall_pillar.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/wall_pillar.fbx",
+      "git_blob_sha1": "da55314986979ac2d4df688492a510c28e273ca0",
+      "sha256": "b96301f9a5383e5019de29f8600e5acaa449861d6944d987c8187b098ecaaadf",
+      "bytes": 34876
+    },
+    {
+      "file": "Assets/fbx/barrier.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/barrier.fbx",
+      "git_blob_sha1": "301721b453657e5ff5ae6cb71f6d721269acf26d",
+      "sha256": "87fd18f28f202a494dd884ae0c5b9cc845cb7e74c5ce0554f84c3f3fa0b2e55e",
+      "bytes": 20716
+    },
+    {
+      "file": "Assets/fbx/barrier_half.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/barrier_half.fbx",
+      "git_blob_sha1": "a2ee25993ab891bf20342c4a84a9815feef0de5a",
+      "sha256": "045d57ae217004236f9a7e23eb432a63f0574cd7d077ac2112447aa3daa0cd36",
+      "bytes": 20076
+    },
+    {
+      "file": "Assets/fbx/barrier_corner.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/barrier_corner.fbx",
+      "git_blob_sha1": "abf05e508499672b8920fe9c342b3a4f56b8e4b9",
+      "sha256": "a21ae0b0eecdcca431b97ca057731578ee7514f85087cc26cf699e0252972b54",
+      "bytes": 22044
+    },
+    {
+      "file": "Assets/fbx/barrier_column.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/barrier_column.fbx",
+      "git_blob_sha1": "c8d9ed48329eb97d07dc9592049716287f0cab8b",
+      "sha256": "3fe349a9063c5d8bdf40d1e944cc9b5b6287de12a130a8b8ad0a6fd46a187597",
+      "bytes": 21260
+    },
+    {
+      "file": "Assets/fbx/floor_tile_large.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/floor_tile_large.fbx",
+      "git_blob_sha1": "203e3489e66c19fe2c1dbd1c0f01ed2eb48f1dd7",
+      "sha256": "cb666e89b5e09da74ee98b1e397e30a973ca06f606dde2bf1775d3a233cec19a",
+      "bytes": 23372
+    },
+    {
+      "file": "Assets/fbx/floor_tile_small.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/floor_tile_small.fbx",
+      "git_blob_sha1": "b543dd1007937b55d6ea61646ce8053796eec41a",
+      "sha256": "07bdab0b6d90f856b4535b555355d226969d892573b8dd09b9692fe30b587c67",
+      "bytes": 20524
+    },
+    {
+      "file": "Assets/fbx/floor_tile_small_corner.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/floor_tile_small_corner.fbx",
+      "git_blob_sha1": "ce4d8613be9a681f3fc5e62bf8bb5aea5f716ade",
+      "sha256": "afaea926e5bd77868487d6eec0fa42cdd090acb362056c642775c5815c60540f",
+      "bytes": 19948
+    },
+    {
+      "file": "Assets/fbx/floor_tile_small_decorated.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/floor_tile_small_decorated.fbx",
+      "git_blob_sha1": "0d124d86d3f77cec1793ea44d9cd556f42a2fe01",
+      "sha256": "1b52793c28ccebca91b5ed09d132c97da7a3792dcab8302cc29a9d51ccc4868b",
+      "bytes": 32364
+    },
+    {
+      "file": "Assets/fbx/floor_tile_small_broken_A.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/floor_tile_small_broken_A.fbx",
+      "git_blob_sha1": "1aae196baa7a44dc493289712667ab4a7fc066be",
+      "sha256": "01116dc5dd8150d64efba0d399aaa0c2505065c30b729bde0286cf94743c1294",
+      "bytes": 21916
+    },
+    {
+      "file": "Assets/fbx/floor_tile_small_broken_B.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/floor_tile_small_broken_B.fbx",
+      "git_blob_sha1": "c0718ffbdd2c4e5115aa61c3ce0a3080c6bedcaf",
+      "sha256": "db4700fa954a6313e44d4f2ac79e728d17a01b7068bd65bdc05a7fba0d442fdb",
+      "bytes": 21180
+    },
+    {
+      "file": "Assets/fbx/floor_tile_small_weeds_A.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/floor_tile_small_weeds_A.fbx",
+      "git_blob_sha1": "4eab4b3b0dd20dc3dec3a9a002636b669da15c9c",
+      "sha256": "ec348e704e27ff481044487328503adbba3f8b651c2eeda77924e40c75ae2bef",
+      "bytes": 38908
+    },
+    {
+      "file": "Assets/fbx/column.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/column.fbx",
+      "git_blob_sha1": "de3a5c6c9818af88666ff9dee4012f9618cf5d71",
+      "sha256": "1684a020001824097a8589e9112d97f58292e7c158dca961d852c787b8243688",
+      "bytes": 20076
+    },
+    {
+      "file": "Assets/fbx/pillar.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/pillar.fbx",
+      "git_blob_sha1": "46554758f871404a91aed9cb428556f3f9fe1dfc",
+      "sha256": "b99d1ff953edb9a932156c8b427aa25d30230cf3a5f607b0a428ee2410cbd55d",
+      "bytes": 22140
+    },
+    {
+      "file": "Assets/fbx/pillar_decorated.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/pillar_decorated.fbx",
+      "git_blob_sha1": "88be243ed7851680bffd07009362b78e5b932996",
+      "sha256": "1f2af46f6954630664637a5074dda2535a75e284d25c9b95be313bba978aeaa7",
+      "bytes": 44652
+    },
+    {
+      "file": "Assets/fbx/torch.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/torch.fbx",
+      "git_blob_sha1": "2fd0b806048d2a622c5c9ffb85d6a765eb7aa9d4",
+      "sha256": "d468b4a0bd41a3ab97b4a6b4b831fdf15ec7f61f1a370960243af39d0f43d586",
+      "bytes": 25788
+    },
+    {
+      "file": "Assets/fbx/torch_lit.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/torch_lit.fbx",
+      "git_blob_sha1": "5c6ec551424b05aea985638893c206d262a60939",
+      "sha256": "72b808e123a01a2ed16eb0748cc9215ce5266b6e73abb28580800fe5d3808be5",
+      "bytes": 27404
+    },
+    {
+      "file": "Assets/fbx/torch_mounted.fbx",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/fbx/torch_mounted.fbx",
+      "git_blob_sha1": "8ee509b2a488800ccd2192c07f66b003706bb82e",
+      "sha256": "edd053866ec82f441d0ee3239075f9c6a1fa9e0d4da8d881caa112ba0180560b",
+      "bytes": 28460
+    },
+    {
+      "file": "Assets/texture/dungeon_texture.png",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/texture/dungeon_texture.png",
+      "git_blob_sha1": "3c36806274363fbe9edb04e8e4d2b46287778418",
+      "sha256": "f9ae182518f908bd09461a56a430b9ca7369812ac10890224cc6f32e7da3e1ee",
+      "bytes": 15794
+    },
+    {
+      "file": "Assets/LICENSE.txt",
+      "source_path": "addons/kaykit_dungeon_remastered/Assets/LICENSE.txt",
+      "git_blob_sha1": "686cf4ee3931b75d4ecfac6308f9d3287553748c",
+      "sha256": "c5f17abf619731f57f6bbff450f6484214605c13aa96bb75bbcfc70930941ff7",
+      "bytes": 829
+    },
+    {
+      "file": "contents.png",
+      "source_path": "addons/kaykit_dungeon_remastered/contents.png",
+      "git_blob_sha1": "ada8d2be2f928504916583f0f526fdd352bd6411",
+      "sha256": "9931c45b2755c017ae6a1aa1531fc48bc8a1701f94bdc9e726a71c6680e82fc3",
+      "bytes": 974320
+    },
+    {
+      "file": "Samples/dungeon_remastered_sample1.png",
+      "source_path": "addons/kaykit_dungeon_remastered/Samples/dungeon_remastered_sample1.png",
+      "git_blob_sha1": "e436f0ef9d9ce247f70a8e5f804afef337a6b77d",
+      "sha256": "cef42f03e528982ce2630f490e525f44ce39e6a93dfbd296a10cca74f56d7f92",
+      "bytes": 1020149
+    }
+  ]
+}
