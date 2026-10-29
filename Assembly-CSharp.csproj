@@ -66,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TutorialInfo\StyleSheets\ReadmeEditor.uss" />
+    <None Include="Assets\ThirdParty\KayKit\Adventurers\LICENSE.txt" />
+    <None Include="Assets\ThirdParty\KayKit\DungeonRemastered\Assets\LICENSE.txt" />
+    <None Include="Assets\ThirdParty\KayKit\Skeletons\LICENSE.txt" />
     <None Include="Assets\TutorialInfo\StyleSheets\ReadmeEditorLight.uss" />
     <None Include="Assets\TutorialInfo\StyleSheets\ReadmeEditorDark.uss" />
   </ItemGroup>
@@ -1496,6 +1499,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Nova.Editor.csproj" />
+    <ProjectReference Include="Nova.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
