@@ -24,7 +24,10 @@ public class PlayerCCMovement : MonoBehaviour
     // 按下闪避时锁定的方向，途中改变移动输入不会改变本次闪避方向。
     private Vector3 dodgeDirection;
     public bool IsDodging => dodgeRemaining > 0f;
+    // 攻击期间锁定水平移动；组件保持启用，输入仍会被持续记录。
+    public bool IsAttackLocked { get; set; }
     private CharacterController _cc;
+    private Animator _animator;
     // 原始输入像方向盘，平滑输入像车身，速度向量用于竖直下落。
     private Vector2 _rawInput;
     private Vector2 _smoothInput;
@@ -35,6 +38,7 @@ public class PlayerCCMovement : MonoBehaviour
     {
         _cc = GetComponent<CharacterController>();
         health = GetComponent<Health>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     // Send Messages 模式下，PlayerInput 会按 "On" + Action名 反射调用此方法
@@ -56,7 +60,7 @@ public class PlayerCCMovement : MonoBehaviour
     // 接收 Input Actions 的 Dodge 按下消息；松开、死亡、暂停或冷却中都不执行。
     public void OnDodge(InputValue value)
     {
-        if (!value.isPressed || !isActiveAndEnabled || Time.timeScale <= 0f ||
+        if (!value.isPressed || !isActiveAndEnabled || Time.timeScale <= 0f || IsAttackLocked ||
             health == null || health.IsDead || IsDodging || Time.time < nextDodgeTime) return;
         // 优先使用当前移动输入；静止时改用角色朝向，最后归一化以保证斜向不加速。
         dodgeDirection = new Vector3(_rawInput.x, 0f, _rawInput.y);
@@ -92,18 +96,22 @@ public class PlayerCCMovement : MonoBehaviour
             dodgeRemaining -= stepTime;
             if (!IsDodging) CancelDodge();
         }
+        else if (IsAttackLocked)
+        {
+            // 攻击期间不位移，平滑值归零，避免解锁瞬间滑步。
+            _smoothInput = Vector2.zero;
+        }
         else
         {
-        // 输入平滑
-        // 平滑输入追上目标，产生起步和松键缓冲。
-        _smoothInput = Vector2.Lerp(_smoothInput, _rawInput,
-            smoothTime <= 0f ? 1f : Time.deltaTime / smoothTime);
+            // 输入平滑
+            // 平滑输入追上目标，产生起步和松键缓冲。
+            _smoothInput = Vector2.Lerp(_smoothInput, _rawInput,
+                smoothTime <= 0f ? 1f : Time.deltaTime / smoothTime);
 
-        // 水平移动
-        // 输入映射到世界 XZ，乘帧时间得到本帧位移。
-        Vector3 moveDir = new Vector3(_smoothInput.x, 0f, _smoothInput.y);
-        _cc.Move(moveDir * moveSpeed * Time.deltaTime);
-
+            // 水平移动
+            // 输入映射到世界 XZ，乘帧时间得到本帧位移。
+            Vector3 moveDir = new Vector3(_smoothInput.x, 0f, _smoothInput.y);
+            _cc.Move(moveDir * moveSpeed * Time.deltaTime);
         }
         // 重力 / 贴地
         // 落地保留小向下速度帮助贴地，再累计重力。
@@ -113,12 +121,17 @@ public class PlayerCCMovement : MonoBehaviour
         }
         _velocity.y += gravity * Time.deltaTime;
         _cc.Move(_velocity * Time.deltaTime);
+        // 把平滑输入的长度传给动画控制器，控制待机与跑步切换。
+        if (_animator != null)
+        {
+            _animator.SetFloat("Speed", _smoothInput.magnitude);
+        }
     }
 
     // 朝原始输入转身，无输入则保留朝向。
     public void FaceMoveDirection()
     {
-        if (IsDodging || Time.timeScale <= 0f) return;
+        if (IsAttackLocked || IsDodging || Time.timeScale <= 0f) return;
         Vector3 direction = new Vector3(_rawInput.x, 0f, _rawInput.y);
         if (direction.sqrMagnitude > 0.0001f)
             transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
@@ -128,6 +141,7 @@ public class PlayerCCMovement : MonoBehaviour
     private void OnDisable()
     {
         CancelDodge();
+        IsAttackLocked = false;
         if (health != null) health.OnDeath.RemoveListener(CancelDodge);
         _rawInput = Vector2.zero;
         _smoothInput = Vector2.zero;

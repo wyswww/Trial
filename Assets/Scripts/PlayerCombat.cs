@@ -12,15 +12,20 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField, Min(1)] private int attackDamage = 20;
     [SerializeField, Min(0.01f)] private float attackRadius = 0.8f;
     [SerializeField, Min(0f)] private float attackCooldown = 0.6f;
+    [SerializeField, Tooltip("攻击动画事件丢失时的保险时长（秒），需大于攻击动画长度。")]
+    private float attackLockTimeout = 2f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField, Tooltip("临时记录攻击触发与命中数量，便于排查输入和攻击范围。")]
     private bool logAttacks = true;
-
+    private bool _isAttacking;
+    private Animator _animator;
     private Health _health;
     private PlayerInput _input;
     private PlayerCCMovement _movement;
     // 普通攻击下次可用的游戏时间；Time.time 在暂停时不增长。
     private float _nextAttackTime;
+    // 本次攻击锁定的保险到期时间，防止动画事件丢失后永久无法移动。
+    private float _attackLockUntil;
     // Q 技能参数：以玩家位置为中心的球形半径、单个敌人的伤害和冷却秒数。
     [SerializeField, Min(0.1f)] private float skillRadius = 3f;
     [SerializeField, Min(1)] private int skillDamage = 30;
@@ -57,6 +62,7 @@ public class PlayerCombat : MonoBehaviour
         _health = GetComponent<Health>();
         _input = GetComponent<PlayerInput>();
         _movement = GetComponent<PlayerCCMovement>();
+        _animator=GetComponentInChildren<Animator>();
         if (attackPoint == null)
         {
             attackPoint = transform.Find("AttackPoint");
@@ -86,7 +92,11 @@ public class PlayerCombat : MonoBehaviour
     // PlayerInput: Send Messages, player/Attack, <Mouse>/leftButton.
     // 输入只响应按下，再检查死亡、攻击点和冷却。
     public void OnAttack(InputValue value)
-    {
+    {       
+
+
+
+        if(_isAttacking)return;
         if (!isActiveAndEnabled || !value.isPressed || Time.timeScale <= 0f)
         {
             return;
@@ -106,12 +116,19 @@ public class PlayerCombat : MonoBehaviour
             LogAttack("忽略攻击：冷却中");
             return;
         }
-
         // 先预约下次出手，挥空也消耗冷却。
         _nextAttackTime = Time.time + attackCooldown;
-        // Apply a direction received this frame before querying the attack volume.
-        // 先朝最新输入方向转身，再同步物理位置。
+        _isAttacking = true;
+        _attackLockUntil = Time.time + attackLockTimeout;
+        // 通过死亡、攻击点和冷却检查后，才播放攻击动画。
+        if (_animator != null)
+        {
+            _animator.SetTrigger("Attack");//播放动画
+        }
+        // 先朝最新输入方向转身，再锁移动，最后同步物理位置。
+        // 用锁标志而不是 enabled=false，保证攻击期间输入仍被记录。
         _movement.FaceMoveDirection();
+        _movement.IsAttackLocked = true;
         Physics.SyncTransforms();
         // 球形撒网，包含指定层的 Trigger，不检测挥刀轨迹。
         Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRadius,
@@ -154,5 +171,23 @@ public class PlayerCombat : MonoBehaviour
         if (point == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(point.position, attackRadius);
+    }
+    // 攻击锁定的超时兜底：动画事件缺失时也能恢复移动。
+    private void Update()
+    {
+        if (_isAttacking && Time.time >= _attackLockUntil)
+        {
+            LogAttack("攻击锁定超时，强制解除");
+            EndAttack();
+        }
+    }
+
+    // 由动画事件或超时保险调用，重复调用安全。
+    public void EndAttack()
+    {
+        if (!_isAttacking) return;
+        _isAttacking = false;
+        _movement.IsAttackLocked = false;
+        LogAttack("攻击结束，解除锁定");
     }
 }
