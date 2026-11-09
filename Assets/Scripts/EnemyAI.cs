@@ -8,11 +8,34 @@ public class EnemyAI : MonoBehaviour
 {
     // 战斗三件套：攻击距离、攻击间隔、攻击伤害；实际配置以 Inspector 保存的值为准。
     [SerializeField, Min(0.1f)] private float attackRange = 1.5f;
-    [SerializeField, Min(0.01f)] private float attackInterval = 1f;
-    [SerializeField, Min(1)] private int attackDamage = 10;
+    [SerializeField, Min(0.01f)] private float attackInterval ;
+    [SerializeField] private Animator enemyAnimator;
+    [SerializeField] private AnimationClip attackClip;
+   // 攻击开始后，等待多久才造成伤害
+[SerializeField, Min(0f)] private float attackDelay = 0.3f;
+[SerializeField] private GameObject attackWarning;
+
+// 本次攻击预计命中的时间
+private float attackHitTime;
+
+// 是否正在等待攻击命中
+private bool attacking;
+     [SerializeField, Min(1)] private int attackDamage = 10;
     // 记住自己的血条、玩家血条、导航司机和负责统计生死的裁判。
     // protected 允许远程子类复用血条和目标；private 字段只由当前基类使用。
+   
+   private enum EnemyState
+{
+    Chase,     // 追击
+    Windup,    // 攻击前摇
+    Attack,    // 攻击
+    Recovery,  // 攻击后恢复
+    Dead       // 死亡
+}
+private EnemyState currentState;
+
     protected Health health;
+    
     protected Health player;
     private NavMeshAgent agent;
     protected WaveManager owner;
@@ -23,11 +46,21 @@ public class EnemyAI : MonoBehaviour
 
     // 出生先找齐组件并订阅死亡通知；导航停车距离略小于攻击距离，确保走进攻击范围。
     protected virtual void Awake()
+
     {
+        if (attackClip != null)
+        {
+            attackInterval=attackClip.length;
+        }
+        currentState=EnemyState.Chase;
         health = GetComponent<Health>();
         agent = GetComponent<NavMeshAgent>();
         health.OnDeath.AddListener(Die);
         agent.stoppingDistance = Mathf.Max(0f, attackRange - 0.1f);
+        if (attackWarning != null)
+{
+    attackWarning.SetActive(false);
+}
     }
 
     // Only the spawning manager supplies scene references.
@@ -61,15 +94,42 @@ public class EnemyAI : MonoBehaviour
         // 像俯视地图一样只比较水平距离，忽略模型中心的高度差。
         Vector3 delta = player.transform.position - transform.position;
         delta.y = 0f;
+        if (attacking)
+{
+    // 前摇期间站在原地
+    StopAgent();
+
+    if (Time.time >= attackHitTime)
+    {
+        attacking = false;
+                if (attackWarning != null)
+                {
+                    attackWarning.SetActive(false);
+                }
+
+        // 命中时再检查玩家是否还在攻击范围内
+        if (delta.sqrMagnitude <= attackRange * attackRange)
+        {
+            PerformAttack();
+        }
+    }
+
+    // 正在攻击时，先不执行后面的追击和开始攻击逻辑
+    return;
+}
         // 用距离平方比较省去开平方；超出范围就更新目的地，让导航系统负责寻路。
         if (delta.sqrMagnitude > attackRange * attackRange)
         {
             agent.isStopped = false;
+            currentState=EnemyState.Chase;
+
             agent.SetDestination(player.transform.position);
             return;
         }
         // 近身后先刹车，再面对玩家；这是暂时停车，玩家跑远后还能继续追。
         StopAgent();
+        
+        
         if (delta.sqrMagnitude > 0.001f)
         {
             transform.rotation = Quaternion.LookRotation(delta);
@@ -80,8 +140,34 @@ public class EnemyAI : MonoBehaviour
             return;
         }
         nextAttackTime = Time.time + attackInterval;
-        // 统一调用攻击入口：基类执行近战扣血，远程子类改为发射子弹。
-        PerformAttack();
+        currentState=EnemyState.Windup;
+        if (enemyAnimator != null)
+{
+    enemyAnimator.SetTrigger("Attack");
+}
+        if (enemyAnimator != null)
+{
+    enemyAnimator.SetTrigger("Attack");
+}
+        if (attackWarning != null)
+{
+    attackWarning.SetActive(true);
+}
+        // 零延迟立即攻击，否则等待命中时间。
+        attackHitTime = Time.time + Mathf.Max(0f, attackDelay);
+        if (attackDelay == 0f)
+        {
+            if (attackWarning != null)
+{
+    attackWarning.SetActive(false);
+}
+            PerformAttack();
+
+            currentState=EnemyState.Attack;
+            currentState=EnemyState.Recovery;
+        }
+        
+        else attacking = true;
     }
 
     // 可被子类替换的攻击入口：近战默认直接扣血，远程子类改为生成投射物。
@@ -102,12 +188,18 @@ public class EnemyAI : MonoBehaviour
     public void StopCombat()
     {
         stopped = true;
+        attacking = false;
         StopAgent();
+        if (attackWarning != null)
+        {
+            attackWarning.SetActive(false);
+        }
     }
 
     // 死亡善后：停战、关导航和碰撞、向裁判报备；整个物体由 Health 负责销毁。
     private void Die()
     {
+        currentState=EnemyState.Dead;
         StopCombat();
         agent.enabled = false;
         foreach (Collider hitbox in GetComponentsInChildren<Collider>(true))
